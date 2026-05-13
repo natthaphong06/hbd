@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday baimon</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  overflow:hidden;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(-45deg,#ff0080,#ff4fd8,#7b2ff7,#00c6ff);
+  background-size:400% 400%;
+  animation:bgMove 10s ease infinite;
+  color:white;
+  position:relative;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.container{
+  z-index:5;
+  animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    transform:translateY(50px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+h1{
+  font-size:60px;
+  text-shadow:
+  0 0 10px #fff,
+  0 0 20px #ff00ff,
+  0 0 40px #ff00ff,
+  0 0 80px #ff00ff;
+  animation:titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.06);
+  }
+}
+
+/* ปุ่มหลัก */
+.magic-btn{
+  margin-top:40px;
+  padding:18px 50px;
+  border:none;
+  border-radius:60px;
+  font-size:22px;
+  font-weight:bold;
+  color:white;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff0080,#ff66cc,#7b2ff7);
+  background-size:300% 300%;
+  animation:btnMove 4s infinite;
+  box-shadow:
+  0 0 20px #ff00ff,
+  0 0 50px #ff00ff;
+  transition:0.4s;
+}
+
+.magic-btn:hover{
+  transform:scale(1.1);
+}
+
+@keyframes btnMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* popup */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:100;
+  backdrop-filter:blur(12px);
+}
+
+.popup-box{
+  width:420px;
+  padding:25px;
+  border-radius:35px;
+  background:rgba(255,255,255,0.15);
+  border:2px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(20px);
+  animation:popupShow 0.7s ease;
+  position:relative;
+  box-shadow:
+  0 0 40px #ff00ff,
+  0 0 90px rgba(255,0,255,0.7);
+}
+
+@keyframes popupShow{
+  from{
+    transform:scale(0) rotate(15deg);
+    opacity:0;
+  }
+  to{
+    transform:scale(1) rotate(0);
+    opacity:1;
+  }
+}
+
+.popup-box img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+  border-radius:25px;
+  margin-bottom:18px;
+  box-shadow:
+  0 0 20px white,
+  0 0 50px #ff00ff;
+}
+
+.popup-box h2{
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.message{
+  max-height:240px;
+  overflow-y:auto;
+  padding-right:10px;
+}
+
+.message p{
+  font-size:18px;
+  line-height:1.8;
+  text-align:left;
+}
+
+/* ปุ่มเค้ก */
+.cake-btn{
+  margin-top:20px;
+  padding:14px 28px;
+  border:none;
+  border-radius:50px;
+  font-size:17px;
+  font-weight:bold;
+  color:white;
+  cursor:pointer;
+  background:linear-gradient(45deg,#ff66cc,#ff0080,#ffcc00);
+  background-size:300% 300%;
+  animation:cakeMove 4s infinite;
+  box-shadow:
+  0 0 15px #ff66cc,
+  0 0 40px #ff0080;
+  transition:0.3s;
+}
+
+.cake-btn:hover{
+  transform:scale(1.08);
+}
+
+@keyframes cakeMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:18px;
+  font-size:35px;
+  cursor:pointer;
+  color:white;
+}
+
+.floating-img{
+  position:absolute;
+  object-fit:cover;
+  border-radius:25px;
+  pointer-events:none;
+  animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(100vh) scale(0);
+    opacity:0;
+  }
+
+  20%{
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-120vh) scale(1.4) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* ดาว */
+.star{
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{
+    opacity:0.2;
+    transform:scale(1);
+  }
+  to{
+    opacity:1;
+    transform:scale(2);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+for(let i=0;i<80;i++){
+
+  const star = document.createElement("div");
+
+  star.classList.add("star");
+
+  star.style.left = Math.random()*100 + "vw";
+  star.style.top = Math.random()*100 + "vh";
+
+  star.style.animationDuration =
+  (1 + Math.random()*3) + "s";
+
+  document.body.appendChild(star);
+}
+
+</script>
+
+<div class="container">
+
+  <h1> HAPPY BIRTHDAY </h1>
+  <h1>nongbai pekaboo</h1>
+
+  <button class="magic-btn" onclick="openPopup()">
+    รับคำอวยพรนะ
+  </button>
+
+</div>
+
+<!-- popup อวยพร -->
+<div class="popup" id="popup">
+
+  <div class="popup-box">
+
+    <span class="close" onclick="closePopup()">&times;</span>
+
+    <img src="images/birthday.jpg">
+
+    <h2> Baimonpekaboo </h2>
+
+    <div class="message">
+
+      <p>
+        สุขสันต์วันเกิดนะ ขอให้เป็น17ปีที่ดี
+        ขอให้ปีนี้เต็มไปด้วยความสุข
+        รอยยิ้ม และเรื่องราวดี ๆ 
+        ขอให้สิ่งที่ตั้งใจไว้
+        สำเร็จทุกอย่าง 
+        ขอให้เจอแต่คนดี ๆ
+        และมีความสุขในทุกวัน 
+      </p>
+
+      <button class="cake-btn" onclick="showCake()">
+         รับเค้กวันเกิด 
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- popup เค้ก -->
+<div class="popup" id="cakePopup">
+
+  <div class="popup-box">
+
+    <span class="close" onclick="closeCakePopup()">&times;</span>
+
+    <img src="images/cake.gif">
+
+    <h2>    Happy Birthday baimon
+ </h2>
+    
+  </div>
+
+</div>
+<script>
+
+const imageUrl = "images/birthday.jpg";
+
+function createFloatingImage(){
+
+  const img = document.createElement("img");
+
+  img.src = imageUrl;
+
+  img.classList.add("floating-img");
+
+  img.style.left = Math.random() * 100 + "vw";
+
+  const size = 60 + Math.random() * 100;
+
+  img.style.width = size + "px";
+  img.style.height = size + "px";
+
+  img.style.animationDuration =
+  (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(img);
+
+  setTimeout(() => {
+    img.remove();
+  }, 8000);
+}
+
+setInterval(createFloatingImage, 250);
+
+function openPopup(){
+  document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+  document.getElementById("popup").style.display = "none";
+}
+
+/* เปิด popup เค้ก */
+function showCake(){
+  document.getElementById("cakePopup").style.display = "flex";
+}
+
+/* ปิด popup เค้ก */
+function closeCakePopup(){
+  document.getElementById("cakePopup").style.display = "none";
+}
+
+</script>
+<!-- เพิ่มตรงก่อน </body> -->
+
+<!-- เพลง -->
+<audio id="bgMusic" autoplay loop>
+  <source src="music/hbd.mp3" type="audio/mp3">
+</audio>
+
+<script>
+
+/* เล่นเพลงอัตโนมัติ */
+window.addEventListener("click", () => {
+
+  const music = document.getElementById("bgMusic");
+
+  music.play();
+
+}, { once:true });
+
+</script>
+</body>
+</html>
